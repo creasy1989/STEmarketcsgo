@@ -1,0 +1,379 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <link href="site.css" rel="stylesheet">
+    <script type="text/javascript" src="scr\jquery.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <link href="site.css" rel="stylesheet">
+    <title>STEmarketcsgo</title>
+</head>
+<body>
+    <div class="user_block">
+        <div class="user_avatar" id="user_avatar"></div>
+        <div class="user_block_text">
+            <div class="user_balance" id="user_sum"></div>
+            <div class="user_balance" id="balance"></div>
+            <div class="user_balance" id="on_sell_sum"></div>
+            <div class="user_balance" id="inv_cnt"></div>
+            <div class="user_balance" id="on_sell_cnt"></div>
+            <div class="user_balance" id="order_cnt"></div>
+            <div class="user_balance" id="order_cnt_low"></div>
+        </div>
+        <br>
+        <br>
+        <button id="btn_show_div-money-send">Показать окно для переноса баланса между аккаунтами</button>
+        <div id="div-money-send" hidden="true">
+            <br>
+            <table border="1">
+                <tr>
+                    <td>Целое число, сумма с копейками/центами, например 100 руб. = 10000 (2 знака копеек), $10 (10€) =
+                        10000 (3 знака у центов)</td>
+                    <td>Апи ключ аккаунта на который будет производиться перенос баланса</td>
+                    <td>Текущий платежный пароль.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="money-send-amount" type="number"/>
+                    </td>
+                    <td>
+                        <input id="money-send-user_api_key"/>
+                    </td>
+                    <td>
+                        <input id="money-send-pay_pass"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="btn-money-send">Сделать перевод баланса</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <br>
+        <div id="settings">
+            <table border=1>
+                <tr>
+                    <td>
+                        <p>Настройки таймеров</p>
+                    </td>
+                    <td>
+                        <p>Настройки apikey</p>
+                    </td>
+                    <td>
+                        <p>Настройки подстройки под конкурентов</p>
+                    </td>
+                    <td>
+                        <p>Настройки расчета цен</p>
+                    </td>
+                    <td>
+                        <p>Настройки фильтров заказов</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <label for="getOrdersRefreshTime">
+                                <p>Обновить заказы</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="getOrdersRefreshTime" id="getOrdersRefreshTime">
+                                <label id="getOrdersRefreshTimeLable" class="time-mark"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="sellInventoryRefreshTime">
+                                <p>Поиск на продажу</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="sellInventoryRefreshTime" id="sellInventoryRefreshTime">
+                                <label id="sellInventoryRefreshTimeLable" class="time-mark"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="itemsOnSaleRefreshTime">
+                                <p>Обновить на продаже</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="itemsOnSaleRefreshTime" id="itemsOnSaleRefreshTime">
+                                <label id="itemsOnSaleRefreshTimeLable" class="time-mark"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="checkOrdersConcurentTime">
+                                <p>Перебивать конкурентов на покупку</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="checkOrdersConcurentTime" id="checkOrdersConcurentTime">
+                                <label id="checkOrdersConcurentTimeLabel" class="time-mark"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="checkOnSaleConcurentTime">
+                                <p>Перебивать конкурентов на продажу</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="checkOnSaleConcurentTime" id="checkOnSaleConcurentTime">
+                                <label id="checkOnSaleConcurentTimeLabel" class="time-mark"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="turnAllOrdersOnTime">
+                                <p>Время включения заказов в работу</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="time" name="turnAllOrdersOnTime" id="turnAllOrdersOnTime">
+                                <label id="turnAllOrdersOnTime" class="time-mark"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="turnAllOnsellTime">
+                                <p>Время включения в продажу</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="time" name="turnAllOnsellTime" id="turnAllOnsellTime">
+                                <label id="turnAllOnsellTime" class="time-mark"></label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <label for="apiKey">
+                                <p>api-ключ market.csgo.com</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" name="apiKey" id="apiKey">
+                                <label id="apiKey"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="delay">
+                                <p>Задержка, мс</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" name="delay" id="delay">
+                                <label id="delay"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="hide_market_float_info">
+                                <p>Скрывать информацию о флоат</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="checkbox" name="hide_market_float_info" id="hide_market_float_info">
+                                <label id="hide_market_float_info"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="soundNotifications">
+                                <p>Звуковые уведомления</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="checkbox" name="soundNotifications" id="soundNotifications">
+                                <label id="soundNotifications"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="show_history_fail">
+                                <p>Показывать неудачные операции</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="checkbox" name="show_history_fail" id="show_history_fail">
+                                <label id="show_history_fail"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="telegram_chat_id">
+                                <p>Идентификатор чата телеграмм</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" name="telegram_chat_id" id="telegram_chat_id">
+                                <label id="telegram_chat_id"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="sendTelegramHistory">
+                                <p>Уведомления телеграм: история</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="checkbox" name="sendTelegramHistory" id="sendTelegramHistory">
+                                <label id="sendTelegramHistory"></label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <label for="maxNacenkaIfNoKonkurent">
+                                <p>Макс наценка на продажу, если нет конкурентов, %</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="maxNacenkaIfNoKonkurent" id="maxNacenkaIfNoKonkurent">
+                                <label id="maxNacenkaIfNoKonkurent"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="orderStepSumIfKonkurent">
+                                <p>Шаг наценки на заказ</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="orderStepSumIfKonkurent" id="orderStepSumIfKonkurent">
+                                <label id="orderStepSumIfKonkurent"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="concurentOnSellSumDiff">
+                                <p>Шаг опускания цены на продаже от конкурентов</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="concurentOnSellSumDiff" id="concurentOnSellSumDiff">
+                                <label id="concurentOnSellSumDiff"></label>
+                            </div>
+                        </div>
+                        <div class="row" id="upadeOrdersIfKonkurent">
+                            <label for="upadeOrdersIfKonkurent">
+                                <p>Перебивать заказы конкурентов</p>
+                            </label>
+                            <input class="settings" type="checkbox" name="upadeOrdersIfKonkurent" id="upadeOrdersIfKonkurent">
+                        </div>
+                        <div class="row" id="upadeOnSaleIfKonkurent">
+                            <label for="upadeOnSaleIfKonkurent">
+                                <p>Перебивать конкурентов на продаже</p>
+                            </label>
+                            <input class="settings" type="checkbox" name="upadeOnSaleIfKonkurent" id="upadeOnSaleIfKonkurent">
+                        </div>
+                        <div class="row" id="placeOrdersOnlyPopular">
+                            <label for="placeOrdersOnlyPopular">
+                                <p>Покупать только популярные дубли</p>
+                            </label>
+                            <input class="settings" type="checkbox" name="placeOrdersOnlyPopular" id="placeOrdersOnlyPopular">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row" style="flex-wrap: wrap;">
+                            <label for="algoritm">Алгоритм продажи</label>
+                            <select class="settings" size="1" name="algoritm" id="algoritm">
+                                <option value="HG">Максимальный</option>
+                                <option value="HSG">Макс безопасный</option>
+                                <option value="AVG">Средний</option>
+                            </select>
+                            X
+                            <input class="settings" type="number" name="algoritm_Q" id="algoritm_Q">
+                        </div>
+                        <div class="row" style="flex-wrap: wrap;">
+                            <label for="algoritm_buy">Алгоритм покупки</label>
+                            <select class="settings" size="1" name="algoritm_buy" id="algoritm_buy">
+                                <option value="HG">Максимальный</option>
+                                <option value="HSG">Макс безопасный</option>
+                                <option value="AVG">Средний</option>
+                            </select>
+                            X
+                            <input class="settings" type="number" name="algoritm_buy_Q" id="algoritm_buy_Q">
+                        </div>
+                        <div class="row">
+                            <label>Мин процент профита, % - рубль</label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="profitPercent" id="profitPercent">
+                                <input class="settings" type="number" name="minProfit" id="minProfit">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="countDayHistoryGraph">Точек для анализа (макс 500)</label>
+                            <input class="settings" type="number" name="countDayHistoryGraph" id="countDayHistoryGraph">
+                        </div>
+                        <div class="row">
+                            <label for="percentLimit">Процент коридора точек (мин 20%)</label>
+                            <input class="settings" type="number" name="percentLimit" id="percentLimit">
+                        </div>
+                        <div class="row">
+                            <label for="points_cnt_calc">Кол-во точек деления (макс 250)</label>
+                            <input class="settings" type="number" name="points_cnt_calc" id="points_cnt_calc">
+                        </div>
+                        <div class="row">
+                            <label for="max_sell_day_cnt">Макс продаж в день</label>
+                            <input class="settings" type="number" name="max_sell_day_cnt" id="max_sell_day_cnt">
+                        </div>
+                        <div class="row">
+                            <label for="max_buy_day_cnt">Макс покупок в день</label>
+                            <input class="settings" type="number" name="max_buy_day_cnt" id="max_buy_day_cnt">
+                        </div>
+                        <button id="updateItemsPrices">Перерасчет цен выделенных</button>
+                    </td>
+                    <td>
+                        <label>Макс место в стакане</label>
+                        <div class="min-row">
+                            <input class="settings" type="number" name="ordersPlace" id="ordersPlace">
+                        </div>
+                        <label>Тренд_500_вниз</label>
+                        <div class="min-row">
+                            <input class="settings" type="number" name="trend500_down" id="trend500_down">
+                        </div>
+                        <label>Тренд_100_вниз</label>
+                        <div class="min-row">
+                            <input class="settings" type="number" name="trend100_down" id="trend100_down">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <button id="startWork" hidden>Начать работу</button>
+        <div id="progress_bar_div"></div>
+        <br>
+        <div id="history"></div>
+        <table>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <table border="1">
+                        <tr>
+                            <td>
+                                <button id="enterSecrteKey">Ввести ключ</button>
+                            </td>
+                            <td>
+                                <button id="turnAllOrdersOn">Включить все в покупку</button>
+                                <br>
+                                <button id="turnAllSellOn">Включить все в продажу</button>
+                            </td>
+                            <td>
+                                <button id="turnAllOrdersOff">Выключить все из покупки</button>
+                                <br>
+                                <button id="turnAllSellOff">Выключить все из продажи</button>
+                            </td>
+                            <td>
+                                <button id="removeAllOrders">удалить все заказы</button>
+                                <br>
+                                <button id="removeAllFromSell">снять все с продажи</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="importFile">Импорт "1.txt"</button>
+                            </td>
+                            <td>
+                                <input type="text" id="itemAdd">
+                                <button id="itemAddButton">Добавить в базу</button>
+                            </td>
+                            <td>
+                                <button id="deleteItems">Удалить отмеченные</button>
+                            </td>
+                            <td>
+                                <button id="hide_unhide_dubl">Скрыть/показать дубли</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <div id="tableDIV"></div>
+                </td>
+                <td>
+                    <button id="clearLogs">Очистить лог</button>
+                    <div id="log"></div>
+                </td>
+            </tr>
+        </table>
+</body>

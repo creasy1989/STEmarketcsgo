@@ -1,0 +1,84 @@
+tr.item_dubl{
+  background-color:#e9dfdf
+}
+
+tr.item{
+  background-color: #ccbc6b;
+}
+
+td.color_onsale {
+    background: #56e456;
+}
+
+td.color_order {
+    background: #7cc9ea;
+}
+
+td.color_onsale_stage1 {
+    background: #bdf5bd;
+}
+
+td.color_onsale_stage2 {
+    background: #56e456;
+}
+
+td.color_onsale_stage5 {
+    background: #e8b3be;
+}
+
+td.color_order_stage1 {
+    background: #bdceea;
+}
+
+td.color_order_stage2 {
+    background: #7cc9ea;
+}
+
+td.color_order_stage5 {
+    background: #e8b3be;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+}
+
+div#log{
+    position: absolute;
+    top: 840px;
+    left: 1200;
+}
+
+#clearLogs{
+    position: absolute;
+    top: 800px;
+    left: 1200;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+progress {
+  height: 40px;
+  width: 500px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+progress:before {
+  content: attr(data-label);
+  font-size: 0.8em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+input[type=number]{
+  width:100px
+}
+
+button{
+  font-size: 20px;
+}
