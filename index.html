@@ -203,6 +203,15 @@
                                 <label id="sendTelegramHistory"></label>
                             </div>
                         </div>
+                        <div class="row">
+                            <label for="history_cnt">
+                                <p>История операций, количество</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="number" name="history_cnt" id="history_cnt">
+                                <label id="history_cnt"></label>
+                            </div>
+                        </div>
                     </td>
                     <td>
                         <div class="row">
@@ -249,6 +258,7 @@
                                 <p>Покупать только популярные дубли</p>
                             </label>
                             <input class="settings" type="checkbox" name="placeOrdersOnlyPopular" id="placeOrdersOnlyPopular">
+                            <input class="settings" type="number" name="placeOrdersOnlyPopular_cnt" id="placeOrdersOnlyPopular_cnt">
                         </div>
                     </td>
                     <td>
@@ -300,6 +310,15 @@
                             <input class="settings" type="number" name="max_buy_day_cnt" id="max_buy_day_cnt">
                         </div>
                         <button id="updateItemsPrices">Перерасчет цен выделенных</button>
+                        <div class="row">
+                            <label for="actualItemsTime">
+                                <p>Время перерасчета цен на продаже</p>
+                            </label>
+                            <div class="min-row">
+                                <input class="settings" type="time" name="actualItemsTime" id="actualItemsTime">
+                                <label id="actualItemsTime" class="time-mark"></label>
+                            </div>
+                        </div>
                     </td>
                     <td>
                         <label>Макс место в стакане</label>
@@ -350,6 +369,11 @@
                                 <br>
                                 <button id="removeAllFromSell">снять все с продажи</button>
                             </td>
+                            <td>
+                                <input type="date" id="reportProfit_date"/>
+                                <br>
+                                <button id="reportProfit_button">Отчет профит</button>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -365,9 +389,11 @@
                             <td>
                                 <button id="hide_unhide_dubl">Скрыть/показать дубли</button>
                             </td>
+                            <td></td>
                         </tr>
                     </table>
                     <br>
+                    <div id="reportProfit"></div>
                     <div id="tableDIV"></div>
                 </td>
                 <td>
